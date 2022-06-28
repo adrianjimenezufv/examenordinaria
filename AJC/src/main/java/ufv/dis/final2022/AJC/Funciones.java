@@ -1,5 +1,8 @@
 package ufv.dis.final2022.AJC;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -16,14 +19,12 @@ public class Funciones {
             Gson gson = new Gson();
 
             // create a reader
-            Reader reader = Files.newBufferedReader(Paths.get("json/LocalizaIP.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("Json/LocalizaIP.json"));
 
             // convert JSON array to list of users
             ListaIP = new Gson().fromJson(reader, new TypeToken<ArrayList<IPClass>>() {
             }.getType());
 
-            // print users
-            // ListaIP.forEach(System.out::println);
 
             // close reader
             reader.close();
