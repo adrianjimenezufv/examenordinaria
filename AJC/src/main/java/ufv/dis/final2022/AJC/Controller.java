@@ -1,10 +1,14 @@
 package ufv.dis.final2022.AJC;
 
 import com.google.gson.Gson;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 @RestController
@@ -52,5 +56,18 @@ public class Controller {
         }
         String ResponseNO = new Gson().toJson(ipbuscada);
         return ResponseNO;
+    }
+
+    @GetMapping("/ip")
+    public ArrayList<IPBuscada> MostrarBusquedas(){
+        String gson = new Gson().toJson(IpsBuscadas);
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("Json/IPsBuscadas.json"))) {
+            bw.write(gson);
+            System.out.println("Fichero creado\n ------------ \n");
+        } catch (IOException ex) {
+            System.out.println("No ha sido posible crear el archivo.");
+        }
+        return IpsBuscadas;
     }
 }
