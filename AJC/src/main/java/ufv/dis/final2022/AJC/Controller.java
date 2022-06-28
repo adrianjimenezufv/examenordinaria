@@ -62,7 +62,7 @@ public class Controller {
     public ArrayList<IPBuscada> MostrarBusquedas(){
         String gson = new Gson().toJson(IpsBuscadas);
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("Json/IPsBuscadas.json"))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("J son/IPsBuscadas.json"))) {
             bw.write(gson);
             System.out.println("Fichero creado\n ------------ \n");
         } catch (IOException ex) {
